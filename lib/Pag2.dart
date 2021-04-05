@@ -299,7 +299,7 @@ class _MyHomePageState2 extends State<Pag2> {
 
     // verifica se a pag 2 foi chamada pelo botão dos objetivos ja existentes
     if (selecaoBarraNavegacao == 0 &&
-        (prefs.getInt('numBotaoAtual') ?? [0]) != 20) {
+        (prefs.getInt('numBotaoAtual') ?? [20]) != 20) {
       /* 
       // apaga informções salvas
       prefs.setStringList('objetivo', []);
@@ -343,9 +343,9 @@ class _MyHomePageState2 extends State<Pag2> {
 
       // verifica se a pag 2 foi chamada pelo botão de adicionar no objetivo
     } else if (selecaoBarraNavegacao == 0 &&
-        (prefs.getInt('numBotaoAtual') ?? [0]) == 20) {
+        (prefs.getInt('numBotaoAtual') ?? [20]) == 20) {
       // verifica se alista de objetivo esta vazia
-      if ((prefs.getStringList('objetivo')).length == 0) {
+      if ((prefs.getStringList('objetivo')) == null) {
         prefs.setStringList('objetivo', [conteudoObjetivo]);
         prefs.setStringList(
             'data', [DateFormat('dd/MM/yy').format(selecionaData)]);

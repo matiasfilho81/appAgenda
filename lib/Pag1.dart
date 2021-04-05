@@ -95,41 +95,43 @@ class _MyHomePageState extends State<Pag1> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     setState(() {
-      objetivo = prefs.getStringList('objetivo') ?? [""];
-      data = prefs.getStringList('data') ?? [""];
-      hora = prefs.getStringList('hora') ?? [""];
-      numListAtiva = prefs.getInt('numListAtiva') ?? 0;
-      semana = prefs.getStringList('semana') ?? ["0"];
+      if (prefs.getStringList('objetivo') != null) {
+        objetivo = prefs.getStringList('objetivo') ?? [""];
+        data = prefs.getStringList('data') ?? [""];
+        hora = prefs.getStringList('hora') ?? [""];
+        numListAtiva = prefs.getInt('numListAtiva') ?? 0;
+        semana = prefs.getStringList('semana') ?? ["0"];
 
-      //ve se é a primeira vez que esta pegando o checklist
+        //ve se é a primeira vez que esta pegando o checklist
 
-      if (prefs.getStringList('checkList').length == 0) {
-        prefs.setStringList('checkList', [
-          " ",
-          " ",
-          " ",
-          " ",
-          " ",
-          " ",
-          " ",
-          " ",
-          " ",
-          " ",
-          " ",
-          " ",
-          " ",
-          " ",
-          " ",
-          " ",
-          " ",
-          " ",
-          " ",
-          " "
-        ]);
+        if (prefs.getStringList('checkList') == null) {
+          prefs.setStringList('checkList', [
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+          ]);
+        }
+
+        // ------- desfaz checkliste apos o dia da semana selecionado -------
+        desfazCheckList();
       }
-
-      // ------- desfaz checkliste apos o dia da semana selecionado -------
-      desfazCheckList();
     });
   }
 
