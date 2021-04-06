@@ -233,12 +233,15 @@ class _MyHomePageState extends State<Pag1> {
               data[i].substring(3, 5) +
               "-" +
               data[i].substring(0, 2) +
-              " 00:00:00Z");
+              " 10:00:00Z");
 
           // verifica se a data do objetivo ja vençeu ou se o checkliste foi
           //  selecionado a pelomenos um dia
-          if ((dataObjetivo.add(const Duration(days: 1)))
-                      .isAfter(DateTime.now()) ==
+
+          if ((dataObjetivo.add(const Duration(days: 1))).isAfter(
+                      DateTime.parse("20" +
+                          DateFormat('yy-MM-dd').format(DateTime.now()) +
+                          " 10:00:00Z")) ==
                   false ||
               DateFormat('yy-MM-dd')
                       .format(dataObjetivo.add(const Duration(days: 1))) ==
@@ -277,7 +280,6 @@ class _MyHomePageState extends State<Pag1> {
             }
 
             prefs.setStringList('checkList', checkListTemporario);
-
             prefs.setInt(
                 'numListAtiva', (prefs.getInt('numListAtiva') ?? 0) - 1);
             numListAtiva = prefs.getInt('numListAtiva');
@@ -458,6 +460,7 @@ class _MyHomePageState extends State<Pag1> {
     AppConsts.setHightSize(MediaQuery.of(context).size.height);
     pegarInfo();
 
+    print(numListAtiva);
     if (numListAtiva == 0) {
       return Scaffold(
         body: Center(

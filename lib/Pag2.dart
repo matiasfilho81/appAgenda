@@ -235,7 +235,7 @@ class _MyHomePageState2 extends State<Pag2> {
 
   void selecionaHoras(BuildContext context) async {
     /*---------------------------------------------------------------------- \
-    |   Seleciona a hora final final                                         |
+    |   Seleciona a hora final                                               |
     \ ----------------------------------------------------------------------*/
 
     TimeOfDay picked = await showTimePicker(
@@ -298,6 +298,7 @@ class _MyHomePageState2 extends State<Pag2> {
     selecaoBarraNavegacao = index;
 
     // verifica se a pag 2 foi chamada pelo botão dos objetivos ja existentes
+
     if (selecaoBarraNavegacao == 0 &&
         (prefs.getInt('numBotaoAtual') ?? [20]) != 20) {
       /* 
@@ -345,7 +346,9 @@ class _MyHomePageState2 extends State<Pag2> {
     } else if (selecaoBarraNavegacao == 0 &&
         (prefs.getInt('numBotaoAtual') ?? [20]) == 20) {
       // verifica se alista de objetivo esta vazia
-      if ((prefs.getStringList('objetivo')) == null) {
+      print((prefs.getStringList('objetivo')));
+      print((prefs.getStringList('objetivo')).length);
+      if ((prefs.getStringList('objetivo')).length == 0) {
         prefs.setStringList('objetivo', [conteudoObjetivo]);
         prefs.setStringList(
             'data', [DateFormat('dd/MM/yy').format(selecionaData)]);
