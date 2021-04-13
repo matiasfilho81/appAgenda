@@ -1,16 +1,18 @@
-# agenda
+# Agenda
 
-A new Flutter project.
+Um aplicativo simples para gerenciar as atividades do cotidiano que está sendo desenvolvido com linguagem Dart durante a aula de desenvolvimento para sistemas móveis da graduação de ADS.
 
-## Getting Started
+* Dart
+* Flutter
+* VS Code
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+# printscreen UI
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+![image](https://user-images.githubusercontent.com/80162033/114619062-840b1d80-9c80-11eb-9a90-3de725eea244.png)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![image](https://user-images.githubusercontent.com/80162033/114619134-94bb9380-9c80-11eb-8550-48e148732477.png)
+
+![image](https://user-images.githubusercontent.com/80162033/114619187-a2711900-9c80-11eb-9410-b09c7928142f.png)
+
+![image](https://user-images.githubusercontent.com/80162033/114619234-b0269e80-9c80-11eb-8f70-51acd282cba3.png)
