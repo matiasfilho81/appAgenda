@@ -137,8 +137,7 @@ class _MyHomePageState extends State<Pag1> {
 
   Future<void> desfazCheckList() async {
     /*---------------------------------------------------------------------- \
-    |   Este metodo pega as informações salvas na memoria e coloca nas       |
-    |   variaveis que seram usadas para construir os objetivos.              |
+    |   Este metodo desfaz checkliste apos o dia da semana selecionado       |
     \ ----------------------------------------------------------------------*/
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -300,7 +299,9 @@ class _MyHomePageState extends State<Pag1> {
   }
 
   void pegarInfo() {
+    // antes tinha mais coisa mas como dava dando erro de q metodo era lido primeiro tive q mudar
     if (jaPegouInformacao == false) {
+      // garante q o app vai pegar só uma vez as informações
       jaPegouInformacao = true;
 
       setState(() {
@@ -460,7 +461,6 @@ class _MyHomePageState extends State<Pag1> {
     AppConsts.setHightSize(MediaQuery.of(context).size.height);
     pegarInfo();
 
-    print(numListAtiva);
     if (numListAtiva == 0) {
       return Scaffold(
         body: Center(

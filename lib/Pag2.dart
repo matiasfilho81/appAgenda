@@ -270,8 +270,14 @@ class _MyHomePageState2 extends State<Pag2> {
       if (picked != null && picked != selectedTimeListTemporario)
         setState(() {
           selecionaListaDeHora = picked;
-          listaDeHorasIniciais[number] = DateFormat('kk:mm')
-              .format(formataTimeOfDay(selecionaListaDeHora));
+          listaDeHorasIniciais[number] =
+              DateFormat('kk').format(formataTimeOfDay(selecionaListaDeHora)) ==
+                      "24"
+                  ? "00:" +
+                      DateFormat('mm')
+                          .format(formataTimeOfDay(selecionaListaDeHora))
+                  : DateFormat('kk:mm')
+                      .format(formataTimeOfDay(selecionaListaDeHora));
           selecionaListaDeHora = TimeOfDay(hour: 0, minute: 0);
         });
     }
@@ -346,9 +352,7 @@ class _MyHomePageState2 extends State<Pag2> {
     } else if (selecaoBarraNavegacao == 0 &&
         (prefs.getInt('numBotaoAtual') ?? [20]) == 20) {
       // verifica se alista de objetivo esta vazia
-      print((prefs.getStringList('objetivo')));
-      print((prefs.getStringList('objetivo')).length);
-      if ((prefs.getStringList('objetivo')).length == 0) {
+      if ((prefs.getStringList('objetivo') ?? 20) == 20) {
         prefs.setStringList('objetivo', [conteudoObjetivo]);
         prefs.setStringList(
             'data', [DateFormat('dd/MM/yy').format(selecionaData)]);
@@ -541,7 +545,9 @@ class _MyHomePageState2 extends State<Pag2> {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(28.0)),
-                        labelText: conteudoObjetivo,
+                        labelText: conteudoObjetivo == ""
+                            ? "Objetivo"
+                            : conteudoObjetivo,
                         labelStyle: TextStyle(fontSize: 18),
                       ),
                       onChanged: (text) {
