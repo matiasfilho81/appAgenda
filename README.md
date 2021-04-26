@@ -1,10 +1,12 @@
 # Agenda
 
-Agenda é um aplicativo simples para gerenciar as atividades do cotidiano. Ela está sendo desenvolvido com linguagem Dart durante a aula de desenvolvimento para sistemas móveis da graduação de ADS.
+Agenda é um aplicativo simples para gerenciar as atividades do cotidiano. Ela está sendo desenvolvida por Grenda Silva e Quézia Godoy com linguagem Dart durante a aula de desenvolvimento para sistemas móveis da graduação de ADS na Universidade São Fancisco.
 
 * Dart
 * Flutter
 * VS Code
+
+
 
 
 # printscreen UI
