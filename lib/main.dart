@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:core';
 import 'package:agenda/Pag1.dart';
+//import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
+  //await Firebase.initializeApp();
   runApp(MyApp());
 }
 
