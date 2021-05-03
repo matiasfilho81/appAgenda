@@ -1,5 +1,5 @@
 /// FeedbackForm is a data class which stores data fields of Feedback.
-class FeedbackForm {
+/*class FeedbackForm {
   String checkList;
   String objetivo;
   String data;
@@ -36,3 +36,4 @@ class FeedbackForm {
         'numBotaoAtual': numBotaoAtual
       };
 }
+*/
