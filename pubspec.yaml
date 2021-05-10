@@ -28,7 +28,7 @@ dependencies:
 
   firebase_core: ^0.5.3
 
-  firebase_database: ^6.1.2      #4.4.0
+  firebase_database: ^4.4.0         #6.1.2
 
   shared_preferences: ^0.5.12+4
   intl: ^0.16.1

@@ -5,6 +5,7 @@ import 'package:agenda/Pag2.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:core';
+//import 'package:firebase_messaging/firebase_messaging.dart';
 
 /*  ------------------------ PÁGINA INICIAL DA AGENDA -------------------------
 
@@ -67,6 +68,11 @@ class _MyHomePageState extends State<Pag1> {
 
   // -----------------------------------------------------------------
 
+  /*_firebaseMessaging.getToken().then((String token) {
+      assert(token != null);
+      print('Push token gerado: $token');
+  });*/
+
   Future<void> salvarCheckList() async {
     /*---------------------------------------------------------------------- \
     |   Quando for selecionado ou deselecionado o checkList este metodo irá  |
@@ -95,6 +101,7 @@ class _MyHomePageState extends State<Pag1> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     setState(() {
+      
       if (prefs.getStringList('objetivo') != null) {
         objetivo = prefs.getStringList('objetivo') ?? [""];
         data = prefs.getStringList('data') ?? [""];

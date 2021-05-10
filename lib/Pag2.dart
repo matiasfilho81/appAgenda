@@ -6,9 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:core';
 
-//import 'controller/form_controller.dart';
-//import 'model/form.dart';
-
 class Pag2 extends StatefulWidget {
   Pag2({Key key, this.title}) : super(key: key);
 
@@ -47,69 +44,7 @@ class _MyHomePageState2 extends State<Pag2> {
   var selecionaDiaSemana = ["0", "0", "0", "0", "0", "0", "0"];
   // selecionar o dia da semana q o objetivo se repete
 
-  // ----------------------------- google sheets -----------------------------------
-
-  //final _formKey = GlobalKey<FormState>();
-  //final _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  /*TextEditingController checkListController = TextEditingController();
-  TextEditingController objetivoController = TextEditingController();
-  TextEditingController dataController = TextEditingController();
-  TextEditingController horaController = TextEditingController();
-  TextEditingController numListAtivaController = TextEditingController();
-  TextEditingController semanaController = TextEditingController();
-  TextEditingController horasController = TextEditingController();
-  TextEditingController numBotaoAtualController = TextEditingController();*/
-
-  //--------------------------------------------------------------------------------
-  // -----------------------------------------------------------------
-
-  /*void _submitForm() {
-    if (_formKey.currentState.validate()) {
-      String objetivoTemporario = conteudoObjetivo;
-      String dataTemporaria = DateFormat('dd/MM/yy').format(selecionaData);
-      String horaTemporaria =
-          DateFormat('kk:mm').format(formataTimeOfDay(selecionaHora));
-      String semanaTemporaria = selecionaDiaSemana[0];
-      String horasTemporarias = listaDeHorasIniciais[0];
-
-      FeedbackForm feedbackForm = FeedbackForm(
-          "0",
-          objetivoTemporario,
-          dataTemporaria,
-          horaTemporaria,
-          "0",
-          semanaTemporaria,
-          horasTemporarias,
-          "0");
-
-      /*FeedbackForm feedbackForm = FeedbackForm(
-        nameController.text,
-        emailController.text,
-        mobileNoController.text,
-        feedbackController.text
-      );*/
-
-      FormController formController = FormController();
-
-      formController.submitForm(feedbackForm, (String response) {
-        print("Response: $response");
-
-        if (response == FormController.STATUS_SUCCESS) {
-          _showSnackbar("Feedback Submitted");
-        } else {
-          _showSnackbar("Error Occurred!");
-        }
-      });
-    }
-  }*/
-
-  //----------------------------------------------------------------
-
-  /*_showSnackbar(String message) {
-    final snackBar = SnackBar(content: Text(message));
-    _scaffoldKey.currentState.showSnackBar(snackBar);
-  }*/
+  
 
   BottomNavigationBarItem criaBotaoBarraNavegacao(String nome, Icon icone) {
     /*---------------------------------------------------------------------- \
@@ -588,7 +523,6 @@ class _MyHomePageState2 extends State<Pag2> {
 
     return MaterialApp(
       home: Scaffold(
-        //key: _scaffoldKey, //< -------------------------------
         bottomNavigationBar: BottomNavigationBar(
           items: [
             criaBotaoBarraNavegacao('Salvar', Icon(Icons.save)),
@@ -602,119 +536,112 @@ class _MyHomePageState2 extends State<Pag2> {
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           child: ListView(
             children: <Widget>[
-              //Form(
-                // <--------
-                //key: _formKey, //  <-------
-                //child: Column(
-                  //children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                          height: 70,
-                          width: setWidth(300),
-                          padding: EdgeInsets.only(right: 10),
-                          alignment: Alignment.center,
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(28.0)),
-                              labelText: conteudoObjetivo == ""
-                                  ? "Objetivo"
-                                  : conteudoObjetivo,
-                              labelStyle: TextStyle(fontSize: 18),
-                            ),
-                            onChanged: (text) {
-                              conteudoObjetivo = text;
-                            },
-                          ),
-                        ),
-                        Container(
-                          height: AppConsts.botaoCircular,
-                          width: AppConsts.botaoCircular,
-                          alignment: Alignment.center,
-                          child: FloatingActionButton(
-                            child: Icon(Icons.delete),
-                            heroTag: "btnDeletar",
-                            onPressed: () {
-                              deletar();
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                    Container(
-                      height: 60,
-                      padding: EdgeInsets.only(top: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Text(
-                            'Data de Termino',
-                          ),
-                          Text(
-                            'Tempo Limite',
-                          ),
-                        ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    height: 70,
+                    width: setWidth(300),
+                    padding: EdgeInsets.only(right: 10),
+                    alignment: Alignment.center,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(28.0)),
+                        labelText: conteudoObjetivo == ""
+                            ? "Objetivo"
+                            : conteudoObjetivo,
+                        labelStyle: TextStyle(fontSize: 18),
                       ),
+                      onChanged: (text) {
+                        conteudoObjetivo = text;
+                      },
                     ),
-                    Container(
-                      height: 40,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          FloatingActionButton.extended(
-                            label: Text(
-                                DateFormat('dd/MM/yy').format(selecionaData),
-                                style: AppConsts.estiloTextoDataHoraFinal()),
-                            elevation: AppConsts.dateAndHourElevation,
-                            backgroundColor: AppConsts.corFundoDataHora,
-                            heroTag: "btnData",
-                            onPressed: () => selecionaDate(context),
-                          ),
-                          FloatingActionButton.extended(
-                            label: Text(
-                                DateFormat('kk').format(selecionaData) == "24"
-                                    ? "00:" +
-                                        DateFormat('mm').format(selecionaData)
-                                    : DateFormat('kk:mm').format(selecionaData),
-                                style: AppConsts.estiloTextoDataHoraFinal()),
-                            elevation: AppConsts.dateAndHourElevation,
-                            backgroundColor: AppConsts.corFundoDataHora,
-                            heroTag: "btnHora",
-                            onPressed: () => selecionaHoras(context),
-                          ),
-                        ],
-                      ),
+                  ),
+                  Container(
+                    height: AppConsts.botaoCircular,
+                    width: AppConsts.botaoCircular,
+                    alignment: Alignment.center,
+                    child: FloatingActionButton(
+                      child: Icon(Icons.delete),
+                      heroTag: "btnDeletar",
+                      onPressed: () {
+                        deletar();
+                      },
                     ),
-                    Container(
-                      height: 60,
-                      padding: EdgeInsets.only(top: 10),
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Repetir o objetivo toda semana',
-                      ),
+                  ),
+                ],
+              ),
+              Container(
+                height: 60,
+                padding: EdgeInsets.only(top: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Text(
+                      'Data de Termino',
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        criaDiaSemana("D", 0),
-                        criaDiaSemana("S", 1),
-                        criaDiaSemana("T", 2),
-                        criaDiaSemana("Q", 3),
-                        criaDiaSemana("Q", 4),
-                        criaDiaSemana("S", 5),
-                        criaDiaSemana("S", 6),
-                      ],
+                    Text(
+                      'Tempo Limite',
                     ),
-                    criaOnOffPai('Notificação', 0),
-                    criaOnOffFilho('Notificar quanto tempo antes', 0, 0),
-                    criaOnOffFilho('Intervalo de notificação frequente', 1, 0),
-                    criaOnOffPai('Alarme', 1),
-                    criaOnOffFilho('Alarmar quanto tempo antes', 2, 1),
-                    criaOnOffFilho('Intervalo de alarme frequente', 3, 1),
-                  //],
-                //),
+                  ],
+                ),
+              ),
+              Container(
+                height: 40,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    FloatingActionButton.extended(
+                      label: Text(DateFormat('dd/MM/yy').format(selecionaData),
+                          style: AppConsts.estiloTextoDataHoraFinal()),
+                      elevation: AppConsts.dateAndHourElevation,
+                      backgroundColor: AppConsts.corFundoDataHora,
+                      heroTag: "btnData",
+                      onPressed: () => selecionaDate(context),
+                    ),
+                    FloatingActionButton.extended(
+                      label: Text(
+                          DateFormat('kk').format(selecionaData) == "24"
+                              ? "00:" + DateFormat('mm').format(selecionaData)
+                              : DateFormat('kk:mm').format(selecionaData),
+                          style: AppConsts.estiloTextoDataHoraFinal()),
+                      elevation: AppConsts.dateAndHourElevation,
+                      backgroundColor: AppConsts.corFundoDataHora,
+                      heroTag: "btnHora",
+                      onPressed: () => selecionaHoras(context),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 60,
+                padding: EdgeInsets.only(top: 10),
+                alignment: Alignment.center,
+                child: Text(
+                  'Repetir o objetivo toda semana',
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  criaDiaSemana("D", 0),
+                  criaDiaSemana("S", 1),
+                  criaDiaSemana("T", 2),
+                  criaDiaSemana("Q", 3),
+                  criaDiaSemana("Q", 4),
+                  criaDiaSemana("S", 5),
+                  criaDiaSemana("S", 6),
+                ],
+              ),
+              criaOnOffPai('Notificação', 0),
+              criaOnOffFilho('Notificar quanto tempo antes', 0, 0),
+              criaOnOffFilho('Intervalo de notificação frequente', 1, 0),
+              criaOnOffPai('Alarme', 1),
+              criaOnOffFilho('Alarmar quanto tempo antes', 2, 1),
+              criaOnOffFilho('Intervalo de alarme frequente', 3, 1),
+              //],
+              //),
               //),
             ],
           ),

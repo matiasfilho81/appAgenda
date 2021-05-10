@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'dart:core';
 
 import 'package:agenda/Pag1.dart';
-//import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
-  //await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
