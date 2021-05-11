@@ -1,3 +1,4 @@
+import 'package:agenda/CardDate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:agenda/utils/common.dart';
 import 'package:agenda/utils/consts.dart';
@@ -5,7 +6,6 @@ import 'package:agenda/Pag2.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:core';
-//import 'package:firebase_messaging/firebase_messaging.dart';
 
 /*  ------------------------ PÁGINA INICIAL DA AGENDA -------------------------
 
@@ -48,6 +48,14 @@ class Pag1 extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<Pag1> {
+
+  CardDate dados = CardDate(
+      /*"a",
+      DateTime.now(),
+      ["a", "b", "c", "d", "e", "f", "g"],
+      [DateTime.now(), DateTime.now(), DateTime.now(), DateTime.now()]*/);
+
+
   // ------------------------- variaveis ---------------------------
 
   bool jaPegouInformacao = false; // ve se o app ja pegou as novas informações
@@ -67,11 +75,6 @@ class _MyHomePageState extends State<Pag1> {
   int numListAtiva = 0; // a quantidade de objetivos criados no momento
 
   // -----------------------------------------------------------------
-
-  /*_firebaseMessaging.getToken().then((String token) {
-      assert(token != null);
-      print('Push token gerado: $token');
-  });*/
 
   Future<void> salvarCheckList() async {
     /*---------------------------------------------------------------------- \
@@ -101,7 +104,6 @@ class _MyHomePageState extends State<Pag1> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     setState(() {
-      
       if (prefs.getStringList('objetivo') != null) {
         objetivo = prefs.getStringList('objetivo') ?? [""];
         data = prefs.getStringList('data') ?? [""];
@@ -454,6 +456,11 @@ class _MyHomePageState extends State<Pag1> {
         padding: EdgeInsets.only(bottom: 2, top: 2, right: 5),
       );
     }
+  }
+
+  @override
+  void initState() {
+    dados.firebase();
   }
 
   @override
