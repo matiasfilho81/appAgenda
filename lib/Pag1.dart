@@ -48,13 +48,7 @@ class Pag1 extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<Pag1> {
-
-  CardDate dados = CardDate(
-      /*"a",
-      DateTime.now(),
-      ["a", "b", "c", "d", "e", "f", "g"],
-      [DateTime.now(), DateTime.now(), DateTime.now(), DateTime.now()]*/);
-
+  CardDate dados = CardDate();
 
   // ------------------------- variaveis ---------------------------
 

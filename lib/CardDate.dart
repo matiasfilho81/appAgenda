@@ -19,8 +19,6 @@ class CardDate {
   Future<void> firebase() async {
     final QuerySnapshot result = await Future.value(
         Firestore.instance.collection("infoAgenda").getDocuments());
-
-    //var list = result.documents;
   }
 
   void update() {
