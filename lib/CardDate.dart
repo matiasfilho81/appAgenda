@@ -21,7 +21,6 @@ class CardDate {
         Firestore.instance.collection("infoAgenda").getDocuments());
 
     //var list = result.documents;
-
   }
 
   void update() {
